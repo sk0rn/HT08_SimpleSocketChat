@@ -51,11 +51,11 @@ public class Client {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            close();
+            closeConnection();
         }
     }
 
-    private void close() {
+    private void closeConnection() {
         try {
             // закрывам все потоки
             input.close();

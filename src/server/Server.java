@@ -60,6 +60,10 @@ public class Server {
         public void run() {
             try {
                 name = input.readLine();
+
+                for (ClientConnection c : clients) {
+                    c.output.println(name + " enter to chat");
+                }
                 String msg;
                 while (true) {
                     msg = input.readLine();
@@ -73,10 +77,12 @@ public class Server {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+                closeConnection();
             }
         }
 
-        void close() {
+        void closeConnection() {
             try {
                 input.close();
                 output.close();
